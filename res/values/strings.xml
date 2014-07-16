@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">VNTFontListPreference</string>
+    <string name="action_settings">Settings</string>
+    <string name="font_text">This uses the font face defined in the first preference</string>
+    <string name="font_text_2">This uses the font face defined in the second preference</string>
+    <string name="font_face">Font face</string>
+    <string name="preference_font_face">preference_font_face</string>
+    <string name="font_face_2">Font face 2</string>
+    <string name="font_face_font_directory">fonts</string>
+    <string name="font_face_default_value">fonts/NicksFont.ttf</string>
+    <string name="preview_content_description">Preview of VNTFontListPreference</string>
+    <string name="check_it_out_on_github">&lt;a href="https://github.com/vanniktech/VNTFontListPreference">Check it out on GitHub&lt;/a></string>
+
+</resources>
