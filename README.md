@@ -10,6 +10,8 @@ This is an easy to use custom preference, which opens a dialog with a list of av
         android:title="@string/font_face"
         vntfontlistpreference:fontDirectory="@string/font_face_font_directory" />
 
+`vntfontlistpreference:fontDirectory` can be something like `fonts`. Please make sure that you don't have a slash at the end. You would then to copy the `ttf` and / or `otf` files into the directory `assets/fonts`.
+
 # Setup
 
 To get this working in your project, make sure to copy the `VNTFontListPreference` class.
