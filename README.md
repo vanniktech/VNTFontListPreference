@@ -3,12 +3,14 @@ VNTFontListPreference
 
 This is an easy to use custom preference, which opens a dialog with a list of available fonts. The selected font gets automatically saved and you are able to set the font directory as well as the defaultValue.
 
-    <com.vanniktech.vntfontlistpreference.VNTFontListPreference
-        xmlns:vntfontlistpreference="http://schemas.android.com/apk/res/com.vanniktech.vntfontlistpreference"
-        android:defaultValue="@string/font_face_default_value"
-        android:key="preference_font_face"
-        android:title="@string/font_face"
-        vntfontlistpreference:fontDirectory="@string/font_face_font_directory" />
+```xml
+<com.vanniktech.vntfontlistpreference.VNTFontListPreference
+    xmlns:vntfontlistpreference="http://schemas.android.com/apk/res/com.vanniktech.vntfontlistpreference"
+    android:defaultValue="@string/font_face_default_value"
+    android:key="preference_font_face"
+    android:title="@string/font_face"
+    vntfontlistpreference:fontDirectory="@string/font_face_font_directory" />
+```
 
 `vntfontlistpreference:fontDirectory` can be something like `fonts`. Please make sure that you don't have a slash at the end. You would then to copy the `ttf` and / or `otf` files into the directory `assets/fonts`.
 
@@ -22,22 +24,27 @@ The declaration of the custom resource id `vntfontlistpreference` happens with `
 
 Also you need a file under `res/values` called `attrs.xml` with the following content:
 
-    <?xml version="1.0" encoding="utf-8"?>
-    <resources>
-
-        <declare-styleable name="VNTFontListPreference">
-            <attr name="fontDirectory" format="string" />
-        </declare-styleable>
-
-    </resources>
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="VNTFontListPreference">
+        <attr name="fontDirectory" format="string" />
+    </declare-styleable>
+</resources>
+```
 
 Afterwards you are good to go and can run your project!
 
 # Get default font
 
-    final SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-    final String defaultFont = sharedPreferences.getString("preference_font_face", this.getString(R.string.font_face_default_value));
-    final Typeface typeface = Typeface.createFromAsset(this.getAssets(), font);
+```java
+final SharedPreferences sharedPreferences = 
+    PreferenceManager.getDefaultSharedPreferences(this);
+final String defaultFont = sharedPreferences.getString(
+    "preference_font_face", this.getString(R.string.font_face_default_value));
+final Typeface typeface = 
+    Typeface.createFromAsset(this.getAssets(), font);
+```
 
 # Preview
 
