@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:vntfontlistpreference="http://schemas.android.com/apk/res-auto" >
+
+    <com.vanniktech.vntfontlistpreference.VNTFontListPreference
+        android:defaultValue="@string/font_face_default_value"
+        android:key="@string/preference_font_face"
+        android:title="@string/font_face"
+        vntfontlistpreference:fontDirectory="@string/font_face_font_directory" />
+    <com.vanniktech.vntfontlistpreference.VNTFontListPreference
+        android:defaultValue="fonts_2/GNUTypeWriter.ttf"
+        android:key="preference_font_face_2"
+        android:title="@string/font_face_2"
+        vntfontlistpreference:fontDirectory="fonts_2" />
+
+</PreferenceScreen>
