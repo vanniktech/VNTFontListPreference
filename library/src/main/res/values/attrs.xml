@@ -3,6 +3,7 @@
 
     <declare-styleable name="VNTFontListPreference">
         <attr name="fontDirectory" format="string" />
+        <attr name="fontPreviewString" format="string" />
     </declare-styleable>
 
 </resources>

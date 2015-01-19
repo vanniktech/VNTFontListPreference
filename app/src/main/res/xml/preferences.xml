@@ -6,7 +6,9 @@
         android:defaultValue="@string/font_face_default_value"
         android:key="@string/preference_font_face"
         android:title="@string/font_face"
-        vntfontlistpreference:fontDirectory="@string/font_face_font_directory" />
+        vntfontlistpreference:fontDirectory="@string/font_face_font_directory"
+        vntfontlistpreference:fontPreviewString="@string/fontPreviewString"/>
+    
     <com.vanniktech.vntfontlistpreference.VNTFontListPreference
         android:defaultValue="fonts_2/GNUTypeWriter.ttf"
         android:key="preference_font_face_2"
