@@ -47,6 +47,6 @@ final Typeface typeface = Typeface.createFromAsset(this.getAssets(), font);
 
 # License
 
-Copyright (c) 2014 Niklas Baudy
+Copyright (c) 2014-2015 Niklas Baudy
 
 Licensed under the Apache License, Version 2.0
