@@ -50,6 +50,6 @@ final Typeface typeface = Typeface.createFromAsset(this.getAssets(), font);
 
 # License
 
-Copyright (c) 2014-2015 Niklas Baudy
+Copyright (C) 2014-2015 Vanniktech - Niklas Baudy
 
 Licensed under the Apache License, Version 2.0
