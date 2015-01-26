@@ -19,18 +19,15 @@ This is an easy to use custom preference, which opens a dialog with a list of av
 
 # Setup
 
-**settings.gradle**
-
-```groovy
-include ':vntfontlistpreference'
-project(':vntfontlistpreference').projectDir = new File(settingsDir, '/path/VNTFontListPreference/library')
-```
-
 **build.gradle**
 
 ```groovy
+repositories {
+    maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
+}
+
 dependencies {
-    compile project(':vntfontlistpreference')
+    compile 'com.vanniktech:vntfontlistpreference:0.1.0-SNAPSHOT'
 }
 ```
 
