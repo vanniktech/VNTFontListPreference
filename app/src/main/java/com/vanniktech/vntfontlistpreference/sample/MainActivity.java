@@ -30,7 +30,6 @@ import android.widget.TextView;
 public class MainActivity extends Activity {
 	@Override
 	protected void onCreate(final Bundle savedInstanceState) {
-        System.out.println("onCreate");
 		super.onCreate(savedInstanceState);
 		this.setContentView(R.layout.activity_main);
 
