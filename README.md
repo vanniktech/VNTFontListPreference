@@ -5,6 +5,7 @@ VNTFontListPreference
 [![API](https://img.shields.io/badge/API-14%2B-brightgreen.svg?style=flat)](https://android-arsenal.com/api?level=14)
 [![License](http://img.shields.io/:license-apache-blue.svg)](http://www.apache.org/licenses/LICENSE-2.0.html)
 [![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-VNTFontListPreference-brightgreen.svg?style=flat)](https://android-arsenal.com/details/1/798)
+[![Jit Pack](https://img.shields.io/github/tag/vanniktech/VNTFontListPreference.svg?label=JitPack%20Maven)](https://jitpack.io/#vanniktech/VNTFontListPreference)
 
 This is an easy to use custom preference, which opens a dialog with a list of available fonts. The selected font gets automatically saved and you are able to set the font directory as well as the defaultValue.
 
