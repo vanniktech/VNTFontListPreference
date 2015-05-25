@@ -103,7 +103,7 @@ public class VNTFontListPreference extends ListPreference {
     }
 
     private void updateSummary() {
-        super.setSummary(super.getTitle() + " " + this.removeFontPath(this.removeDataEnding(mSelectedFontFace)));
+        this.setSummary(this.removeFontPath(this.removeDataEnding(mSelectedFontFace)));
     }
 
     private String getFontPath(final String font) {
