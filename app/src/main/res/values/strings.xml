@@ -11,7 +11,7 @@
     <string name="font_face_font_directory">fonts</string>
     <string name="font_face_default_value">fonts/NicksFont.ttf</string>
     <string name="preview_content_description">Preview of VNTFontListPreference</string>
-    <string name="fontPreviewString">PreviewString</string>
+    <string name="font_preview_string">PreviewString</string>
     <string name="check_it_out_on_github">&lt;a href="https://github.com/vanniktech/VNTFontListPreference">Check it out on GitHub&lt;/a></string>
 
 </resources>

@@ -1,12 +1,12 @@
 /*
  * Copyright (C) 2014-2015 Vanniktech - Niklas Baudy <http://vanniktech.de/Imprint>
- *
+ * 
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
+ * 
+ * http://www.apache.org/licenses/LICENSE-2.0
+ * 
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -15,6 +15,9 @@
  */
 
 package com.vanniktech.vntfontlistpreference;
+
+import java.io.IOException;
+import java.util.ArrayList;
 
 import android.app.AlertDialog.Builder;
 import android.content.Context;
@@ -29,12 +32,8 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.CheckedTextView;
 
-import java.io.IOException;
-import java.util.ArrayList;
-
 public class VNTFontListPreference extends ListPreference {
     private final Context           mContext;
-    private final LayoutInflater    mInflater;
 
     private String                  mSelectedFontFace;
     private final String            mFontDirectory;
@@ -45,7 +44,6 @@ public class VNTFontListPreference extends ListPreference {
     public VNTFontListPreference(final Context context, final AttributeSet attrs) {
         super(context, attrs);
         mContext = context;
-        mInflater = LayoutInflater.from(context);
 
         final TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.VNTFontListPreference);
         mFontDirectory = a.getString(R.styleable.VNTFontListPreference_fontDirectory);
@@ -143,7 +141,7 @@ public class VNTFontListPreference extends ListPreference {
             final CustomHolder holder;
 
             if (convertView == null) {
-                convertView = mInflater.inflate(android.R.layout.select_dialog_singlechoice, parent, false);
+                convertView = LayoutInflater.from(mContext).inflate(android.R.layout.select_dialog_singlechoice, parent, false);
 
                 holder = new CustomHolder();
                 holder.checkedTextView = (CheckedTextView) convertView;

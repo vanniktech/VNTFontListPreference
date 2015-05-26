@@ -1,11 +1,12 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<RelativeLayout
     android:id="@+id/container"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="@dimen/padding"
     tools:context="com.vanniktech.vntfontlistpreference.MainActivity"
-    tools:ignore="MergeRootFrame" >
+    tools:ignore="MergeRootFrame">
 
     <TextView
         android:id="@+id/check_it_out_on_github"
@@ -13,7 +14,7 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:linksClickable="true"
-        android:textSize="22sp" />
+        android:textSize="22sp"/>
 
     <TextView
         android:id="@+id/font"
@@ -23,7 +24,7 @@
         android:layout_centerHorizontal="true"
         android:paddingTop="@dimen/padding"
         android:text="@string/font_text"
-        android:textSize="20sp" />
+        android:textSize="20sp"/>
 
     <TextView
         android:id="@+id/font_2"
@@ -33,7 +34,7 @@
         android:layout_centerHorizontal="true"
         android:paddingTop="@dimen/padding"
         android:text="@string/font_text_2"
-        android:textSize="20sp" />
+        android:textSize="20sp"/>
 
     <ImageView
         android:layout_width="wrap_content"
@@ -41,6 +42,6 @@
         android:layout_below="@id/font_2"
         android:contentDescription="@string/preview_content_description"
         android:paddingTop="@dimen/padding"
-        android:src="@drawable/preview" />
+        android:src="@drawable/preview"/>
 
 </RelativeLayout>
