@@ -16,9 +16,6 @@
 
 package com.vanniktech.vntfontlistpreference;
 
-import java.io.IOException;
-import java.util.ArrayList;
-
 import android.app.AlertDialog.Builder;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -32,9 +29,10 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.CheckedTextView;
 
-public class VNTFontListPreference extends ListPreference {
-    private final Context           mContext;
+import java.io.IOException;
+import java.util.ArrayList;
 
+public class VNTFontListPreference extends ListPreference {
     private String                  mSelectedFontFace;
     private final String            mFontDirectory;
     private final String            mFontPreviewString;
@@ -43,7 +41,6 @@ public class VNTFontListPreference extends ListPreference {
 
     public VNTFontListPreference(final Context context, final AttributeSet attrs) {
         super(context, attrs);
-        mContext = context;
 
         final TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.VNTFontListPreference);
         mFontDirectory = a.getString(R.styleable.VNTFontListPreference_fontDirectory);
@@ -51,7 +48,7 @@ public class VNTFontListPreference extends ListPreference {
         a.recycle();
 
         try {
-            final String[] fonts = mContext.getAssets().list(mFontDirectory);
+            final String[] fonts = context.getAssets().list(mFontDirectory);
 
             for (final String font : fonts) {
                 final String fontType = font.substring(font.length() - 3);
@@ -139,9 +136,10 @@ public class VNTFontListPreference extends ListPreference {
         @Override
         public View getView(final int position, View convertView, final ViewGroup parent) {
             final CustomHolder holder;
+            final Context context = parent.getContext();
 
             if (convertView == null) {
-                convertView = LayoutInflater.from(mContext).inflate(android.R.layout.select_dialog_singlechoice, parent, false);
+                convertView = LayoutInflater.from(context).inflate(android.R.layout.select_dialog_singlechoice, parent, false);
 
                 holder = new CustomHolder();
                 holder.checkedTextView = (CheckedTextView) convertView;
@@ -151,7 +149,7 @@ public class VNTFontListPreference extends ListPreference {
                 holder = (CustomHolder) convertView.getTag();
             }
 
-            final Typeface type = Typeface.createFromAsset(mContext.getAssets(), VNTFontListPreference.this.getFontPath(mEntryValues.get(position)));
+            final Typeface type = Typeface.createFromAsset(context.getAssets(), VNTFontListPreference.this.getFontPath(mEntryValues.get(position)));
             holder.checkedTextView.setTypeface(type);
             holder.checkedTextView.setText(mFontPreviewString != null ? mFontPreviewString : mEntries.get(position));
             holder.checkedTextView.setChecked(VNTFontListPreference.this.getFontPath(mEntryValues.get(position)).equals(mSelectedFontFace));
