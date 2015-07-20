@@ -19,7 +19,7 @@ This is an easy to use custom preference, which opens a dialog with a list of av
     vntfontlistpreference:fontDirectory="@string/font_face_font_directory" />
 ```
 
-`vntfontlistpreference:fontDirectory` can be something like `fonts`. Please make sure that you don't have a slash at the end. You would then to copy the `ttf` and / or `otf` files into the directory `assets/fonts`.
+`vntfontlistpreference:fontDirectory` can be something like `fonts`. This means that the dialog will list all fonts, that have the ending `ttf` or `otf` under `assets/fonts`. Also please make sure that you don't have a slash at the end of the fontDirectory configuration. If there are no fonts under the provided directory it will throw an exception during initialization.
 
 # Download
 
