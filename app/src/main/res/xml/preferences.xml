@@ -15,4 +15,16 @@
         android:title="@string/font_face_2"
         vntfontlistpreference:fontDirectory="fonts_2"/>
 
+    <com.vanniktech.vntfontlistpreference.VNTFontListPreference
+        android:defaultValue="fonts_2/GNUTypeWriter.ttf"
+        android:key="preference_callback"
+        android:title="Callback"
+        vntfontlistpreference:fontDirectory="fonts_2"/>
+
+    <com.vanniktech.vntfontlistpreference.VNTFontListPreference
+        android:defaultValue="fonts_2/GNUTypeWriter.ttf"
+        android:key="preference_custom_summary"
+        android:title="Custom summary"
+        vntfontlistpreference:fontDirectory="fonts_2"/>
+
 </PreferenceScreen>

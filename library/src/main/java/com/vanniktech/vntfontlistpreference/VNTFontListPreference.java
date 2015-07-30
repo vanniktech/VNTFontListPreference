@@ -90,9 +90,13 @@ public class VNTFontListPreference extends ListPreference {
             @Override
             public void onClick(final DialogInterface dialog, final int which) {
                 if (shouldPersist()) {
-                    mSelectedFontFace = mFonts.get(which);
-                    persistString(mSelectedFontFace.fontPath);
-                    updateSummary();
+                    final Font selectedFont = mFonts.get(which);
+
+                    if (callChangeListener(selectedFont.fontPath)) {
+                        mSelectedFontFace = selectedFont;
+                        updateSummary();
+                        persistString(mSelectedFontFace.fontPath);
+                    }
                 }
                 dialog.cancel();
             }
