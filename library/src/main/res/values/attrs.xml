@@ -2,8 +2,8 @@
 <resources>
 
     <declare-styleable name="VNTFontListPreference">
-        <attr name="fontDirectory" format="string"/>
-        <attr name="fontPreviewString" format="string"/>
+        <attr name="vnt_fontDirectory" format="string"/>
+        <attr name="vnt_fontPreviewString" format="string"/>
     </declare-styleable>
 
 </resources>

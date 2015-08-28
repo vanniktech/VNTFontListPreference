@@ -54,7 +54,7 @@ public class VNTFontListPreferenceTest {
         when(mContext.getAssets()).thenReturn(mAssets);
 
         final TypedArray typedArray = mock(TypedArray.class);
-        when(typedArray.getString(R.styleable.VNTFontListPreference_fontDirectory)).thenReturn("fonts");
+        when(typedArray.getString(R.styleable.VNTFontListPreference_vnt_fontDirectory)).thenReturn("fonts");
 
         mAttributeSet = any(AttributeSet.class);
         when(mContext.obtainStyledAttributes(mAttributeSet, any(int[].class))).thenReturn(typedArray);

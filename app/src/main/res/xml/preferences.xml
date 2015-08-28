@@ -6,25 +6,25 @@
         android:defaultValue="@string/font_face_default_value"
         android:key="@string/preference_font_face"
         android:title="@string/font_face"
-        vntfontlistpreference:fontDirectory="@string/font_face_font_directory"
-        vntfontlistpreference:fontPreviewString="@string/font_preview_string"/>
+        vntfontlistpreference:vnt_fontDirectory="@string/font_face_font_directory"
+        vntfontlistpreference:vnt_fontPreviewString="@string/font_preview_string"/>
 
     <com.vanniktech.vntfontlistpreference.VNTFontListPreference
         android:defaultValue="fonts_2/GNUTypeWriter.ttf"
         android:key="preference_font_face_2"
         android:title="@string/font_face_2"
-        vntfontlistpreference:fontDirectory="fonts_2"/>
+        vntfontlistpreference:vnt_fontDirectory="fonts_2"/>
 
     <com.vanniktech.vntfontlistpreference.VNTFontListPreference
         android:defaultValue="fonts_2/GNUTypeWriter.ttf"
         android:key="preference_callback"
         android:title="Callback"
-        vntfontlistpreference:fontDirectory="fonts_2"/>
+        vntfontlistpreference:vnt_fontDirectory="fonts_2"/>
 
     <com.vanniktech.vntfontlistpreference.VNTFontListPreference
         android:defaultValue="fonts_2/GNUTypeWriter.ttf"
         android:key="preference_custom_summary"
         android:title="Custom summary"
-        vntfontlistpreference:fontDirectory="fonts_2"/>
+        vntfontlistpreference:vnt_fontDirectory="fonts_2"/>
 
 </PreferenceScreen>
