@@ -16,10 +16,10 @@ This is an easy to use custom preference, which opens a dialog with a list of av
     android:defaultValue="@string/font_face_default_value"
     android:key="preference_font_face"
     android:title="@string/font_face"
-    vntfontlistpreference:fontDirectory="@string/font_face_font_directory" />
+    vntfontlistpreference:vnt_fontDirectory="@string/font_face_font_directory" />
 ```
 
-`vntfontlistpreference:fontDirectory` can be something like `fonts`. This means that the dialog will list all fonts, that have the ending `ttf` or `otf` under `assets/fonts`. Also please make sure that you don't have a slash at the end of the fontDirectory configuration. If there are no fonts under the provided directory it will throw an exception during initialization.
+`vntfontlistpreference:vnt_fontDirectory` can be something like `fonts`. This means that the dialog will list all fonts, that have the ending `ttf` or `otf` under `assets/fonts`. Also please make sure that you don't have a slash at the end of the vnt_fontDirectory configuration. If there are no fonts under the provided directory it will throw an exception during initialization.
 
 # Download
 
@@ -41,7 +41,7 @@ repositories {
 }
 
 dependencies {
-    compile 'com.vanniktech:vntfontlistpreference:0.1.2-SNAPSHOT'
+    compile 'com.vanniktech:vntfontlistpreference:0.1.3-SNAPSHOT'
 }
 ```
 
