@@ -24,8 +24,8 @@ import android.util.AttributeSet;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.robolectric.Robolectric;
 import org.robolectric.RobolectricTestRunner;
+import org.robolectric.RuntimeEnvironment;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -48,8 +48,8 @@ public class VNTFontListPreferenceTest {
 
     @Before
     public void setUp() {
-        mContext = spy(Robolectric.application.getApplicationContext());
-        mAssets = spy(Robolectric.application.getAssets());
+        mContext = spy(RuntimeEnvironment.application.getApplicationContext());
+        mAssets = spy(RuntimeEnvironment.application.getAssets());
 
         when(mContext.getAssets()).thenReturn(mAssets);
 
