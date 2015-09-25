@@ -57,7 +57,7 @@ final Typeface typeface = Typeface.createFromAsset(this.getAssets(), font);
 
 # Preview
 
-![Image of VNTFontListPreference](app/src/main/res/drawable/preview.png)
+<img src="app/src/main/res/drawable/preview.png" alt="Image of VNTFontListPreference" width="320">
 
 # License
 
