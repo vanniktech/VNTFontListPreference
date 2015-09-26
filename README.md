@@ -19,7 +19,7 @@ This is an easy to use custom preference, which opens a dialog with a list of av
     vntfontlistpreference:vnt_fontDirectory="@string/font_face_font_directory" />
 ```
 
-`vntfontlistpreference:vnt_fontDirectory` can be something like `fonts`. This means that the dialog will list all fonts, that have the ending `ttf` or `otf` under `assets/fonts`. Also please make sure that you don't have a slash at the end of the vnt_fontDirectory configuration. If there are no fonts under the provided directory it will throw an exception during initialization.
+`vntfontlistpreference:vnt_fontDirectory` can be something like `fonts`. This means that the dialog will list all fonts, that have the ending `ttf` or `otf` under `assets/fonts`. Also please make sure that you don't have a slash at the end of the `vnt_fontDirectory` configuration. If there are no fonts under the provided directory it will throw an exception during initialization.
 
 # Download
 
