@@ -52,12 +52,6 @@ public class VNTFontListPreferenceTest {
         mAssets = spy(RuntimeEnvironment.application.getAssets());
 
         when(mContext.getAssets()).thenReturn(mAssets);
-
-        final TypedArray typedArray = mock(TypedArray.class);
-        when(typedArray.getString(R.styleable.VNTFontListPreference_vnt_fontDirectory)).thenReturn("fonts");
-
-        mAttributeSet = any(AttributeSet.class);
-        when(mContext.obtainStyledAttributes(mAttributeSet, any(int[].class))).thenReturn(typedArray);
     }
 
     @Test(expected = IllegalStateException.class)
@@ -72,8 +66,29 @@ public class VNTFontListPreferenceTest {
     }
 
     @Test
-    public void testVNTFontListPreferenceShouldFindOTFAndTTFFilesWhenPresentInDirectory() throws IOException {
-        doReturn(new String[] { "Sans.ttf", "Arial.otf", "Arial.txt", "Sans-serif.tft", "Arial-bold.oft" }).when(mAssets).list("fonts");
+    public void testVNTFontListPreferenceShouldFindOTFAndTTFFilesWhenPresentInDirectoryWithoutSlashAtTheEnd() throws IOException {
+        final TypedArray typedArray = mock(TypedArray.class);
+        when(typedArray.getString(R.styleable.VNTFontListPreference_vnt_fontDirectory)).thenReturn("fonts");
+
+        mAttributeSet = any(AttributeSet.class);
+        when(mContext.obtainStyledAttributes(mAttributeSet, any(int[].class))).thenReturn(typedArray);
+
+        this.testFindFontsInDirectory("fonts");
+    }
+
+    @Test
+    public void testVNTFontListPreferenceShouldFindOTFAndTTFFilesWhenPresentInDirectoryWithSlashAtTheEnd() throws IOException {
+        final TypedArray typedArray = mock(TypedArray.class);
+        when(typedArray.getString(R.styleable.VNTFontListPreference_vnt_fontDirectory)).thenReturn("fonts/");
+
+        mAttributeSet = any(AttributeSet.class);
+        when(mContext.obtainStyledAttributes(mAttributeSet, any(int[].class))).thenReturn(typedArray);
+
+        this.testFindFontsInDirectory("fonts/");
+    }
+
+    private void testFindFontsInDirectory(final String path) throws IOException {
+        doReturn(new String[] { "Sans.ttf", "Arial.otf", "Arial.txt", "Sans-serif.tft", "Arial-bold.oft" }).when(mAssets).list(path);
 
         final ArrayList<VNTFontListPreference.Font> fonts = new VNTFontListPreference(mContext, mAttributeSet).mFonts;
 
