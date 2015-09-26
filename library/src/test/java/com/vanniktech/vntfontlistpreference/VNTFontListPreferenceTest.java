@@ -71,6 +71,7 @@ public class VNTFontListPreferenceTest {
         new VNTFontListPreference(mContext, mAttributeSet);
     }
 
+    @Test
     public void testVNTFontListPreferenceShouldFindOTFAndTTFFilesWhenPresentInDirectory() throws IOException {
         doReturn(new String[] { "Sans.ttf", "Arial.otf", "Arial.txt", "Sans-serif.tft", "Arial-bold.oft" }).when(mAssets).list("fonts");
 
@@ -78,7 +79,7 @@ public class VNTFontListPreferenceTest {
 
         assertEquals(2, fonts.size());
         assertEquals("fonts/Sans.ttf", fonts.get(0).fontPath);
-        assertEquals("fonts/Arial.ttf", fonts.get(1).fontPath);
+        assertEquals("fonts/Arial.otf", fonts.get(1).fontPath);
     }
 
     @Test
