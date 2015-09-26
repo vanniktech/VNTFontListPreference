@@ -41,7 +41,7 @@ repositories {
 }
 
 dependencies {
-    compile 'com.vanniktech:vntfontlistpreference:0.1.3-SNAPSHOT'
+    compile 'com.vanniktech:vntfontlistpreference:0.2.0-SNAPSHOT'
 }
 ```
 
