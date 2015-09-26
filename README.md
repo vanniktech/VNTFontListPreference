@@ -55,6 +55,10 @@ final String defaultFont = sharedPreferences.getString("preference_font_face", t
 final Typeface typeface = Typeface.createFromAsset(this.getAssets(), font);
 ```
 
+# Proguard
+
+No configuration needed.
+
 # Preview
 
 <img src="app/src/main/res/drawable/preview.png" alt="Image of VNTFontListPreference" width="320">
