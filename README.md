@@ -21,7 +21,7 @@ This is an easy to use custom preference, which opens a dialog with a list of av
 
 `vntfontlistpreference:vnt_fontDirectory` can be something like `fonts`. This means that the dialog will list all fonts, that have the ending `ttf` or `otf` under `assets/fonts`. If there are no fonts under the provided directory it will throw an exception during initialization.
 
-# Download
+# Download Sample App
 
 [![Get it on Google Play](https://developer.android.com/images/brand/en_generic_rgb_wo_45.png)](https://play.google.com/store/apps/details?id=com.vanniktech.vntfontlistpreference.sample)
 
