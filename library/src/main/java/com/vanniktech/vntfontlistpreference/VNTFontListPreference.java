@@ -56,10 +56,12 @@ public class VNTFontListPreference extends ListPreference {
             }
 
             for (final String font : fonts) {
-                final String fontType = font.substring(font.length() - 3);
+                if (font != null && font.length() > 5) {
+                    final String fontType = font.substring(font.length() - 3);
 
-                if ("ttf".equals(fontType) || "otf".equals(fontType)) {
-                    mFonts.add(new Font(StringFormatUtils.addAtEndIfNotPresent(fontDirectory, "/") + font));
+                    if ("ttf".equals(fontType) || "otf".equals(fontType)) {
+                        mFonts.add(new Font(StringFormatUtils.addAtEndIfNotPresent(fontDirectory, "/") + font));
+                    }
                 }
             }
         } catch (final IOException e) {
