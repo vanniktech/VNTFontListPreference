@@ -34,10 +34,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class VNTFontListPreference extends ListPreference {
-    private Font                    mSelectedFontFace;
-    private final String            mFontPreviewString;
-    protected final ArrayList<Font> mFonts = new ArrayList<>();
+    private static final int MIN_FONT_FILE_LENGTH = 5;
 
+    private Font               mSelectedFontFace;
+    private final String       mFontPreviewString;
+    protected final List<Font> mFonts = new ArrayList<>();
+
+    @SuppressWarnings({ "PMD.AvoidCatchingNPE", "PMD.AvoidPrintStackTrace", "PMD.AvoidCatchingGenericException", "PMD.PreserveStackTrace" })
     public VNTFontListPreference(final Context context, final AttributeSet attrs) {
         super(context, attrs);
 
@@ -56,7 +59,7 @@ public class VNTFontListPreference extends ListPreference {
             }
 
             for (final String font : fonts) {
-                if (font != null && font.length() > 5) {
+                if (font != null && font.length() > MIN_FONT_FILE_LENGTH) {
                     final String fontType = font.substring(font.length() - 3);
 
                     if ("ttf".equals(fontType) || "otf".equals(fontType)) {
@@ -68,7 +71,7 @@ public class VNTFontListPreference extends ListPreference {
             e.printStackTrace();
         }
 
-        if (mFonts.size() == 0) {
+        if (mFonts.isEmpty()) {
             throw new IllegalStateException("FontListPreference could not find any fonts in the assets/" + fontDirectory + " folder. Please add some!");
         }
     }
@@ -108,7 +111,9 @@ public class VNTFontListPreference extends ListPreference {
     }
 
     private void updateSummary() {
-        this.setSummary(mSelectedFontFace.getName());
+        if (mSelectedFontFace != null) {
+            this.setSummary(mSelectedFontFace.getName());
+        }
     }
 
     private static class CustomListPreferenceAdapter extends BaseAdapter {
@@ -116,7 +121,7 @@ public class VNTFontListPreference extends ListPreference {
         private final String     mFontPreviewString;
         private final Font       mSelectedFontFace;
 
-        public CustomListPreferenceAdapter(final List<Font> fonts, final String fontPreviewString, final Font selectedFontFace) {
+        CustomListPreferenceAdapter(final List<Font> fonts, final String fontPreviewString, final Font selectedFontFace) {
             mFonts = fonts;
             mFontPreviewString = fontPreviewString;
             mSelectedFontFace = selectedFontFace;
@@ -138,19 +143,22 @@ public class VNTFontListPreference extends ListPreference {
         }
 
         @Override
-        public View getView(final int position, View convertView, final ViewGroup parent) {
+        public View getView(final int position, final View convertView, final ViewGroup parent) {
             final CustomHolder holder;
             final Context context = parent.getContext();
 
+            final View view;
+
             if (convertView == null) {
-                convertView = LayoutInflater.from(context).inflate(android.R.layout.select_dialog_singlechoice, parent, false);
+                view = LayoutInflater.from(context).inflate(android.R.layout.select_dialog_singlechoice, parent, false);
 
                 holder = new CustomHolder();
-                holder.checkedTextView = (CheckedTextView) convertView;
+                holder.checkedTextView = (CheckedTextView) view;
 
-                convertView.setTag(holder);
+                view.setTag(holder);
             } else {
-                holder = (CustomHolder) convertView.getTag();
+                view = convertView;
+                holder = (CustomHolder) view.getTag();
             }
 
             final Font font = mFonts.get(position);
@@ -160,7 +168,7 @@ public class VNTFontListPreference extends ListPreference {
             holder.checkedTextView.setText(mFontPreviewString != null ? mFontPreviewString : font.getName());
             holder.checkedTextView.setChecked(font.equals(mSelectedFontFace));
 
-            return convertView;
+            return view;
         }
     }
 
@@ -169,6 +177,8 @@ public class VNTFontListPreference extends ListPreference {
     }
 
     protected static class Font {
+        private static final int FILE_ENDING_LENGTH = 4;
+
         protected final String fontPath;
 
         public Font(final String fontPath) {
@@ -176,7 +186,7 @@ public class VNTFontListPreference extends ListPreference {
         }
 
         public String getName() {
-            return fontPath.substring(fontPath.lastIndexOf('/') + 1, fontPath.length() - 4);
+            return fontPath.substring(fontPath.lastIndexOf('/') + 1, fontPath.length() - FILE_ENDING_LENGTH);
         }
 
         public String getPath() {
