@@ -30,7 +30,7 @@ import org.robolectric.RobolectricTestRunner;
 import org.robolectric.RuntimeEnvironment;
 
 import java.io.IOException;
-import java.util.ArrayList;
+import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -109,7 +109,7 @@ public class VNTFontListPreferenceTest {
 
         doReturn(new String[] { "Test.ttf", "Test.otf", "Test", "", "a", null }).when(mAssets).list(path);
 
-        final ArrayList<VNTFontListPreference.Font> fonts = new VNTFontListPreference(mContext, mAttributeSet).mFonts;
+        final List<VNTFontListPreference.Font> fonts = new VNTFontListPreference(mContext, mAttributeSet).mFonts;
 
         assertEquals(2, fonts.size());
         assertEquals("fonts/Test.ttf", fonts.get(0).fontPath);
@@ -119,7 +119,7 @@ public class VNTFontListPreferenceTest {
     private void testFindFontsInDirectory(final String path) throws IOException {
         doReturn(new String[] { "Sans.ttf", "Arial.otf", "Arial.txt", "Sans-serif.tft", "Arial-bold.oft" }).when(mAssets).list(path);
 
-        final ArrayList<VNTFontListPreference.Font> fonts = new VNTFontListPreference(mContext, mAttributeSet).mFonts;
+        final List<VNTFontListPreference.Font> fonts = new VNTFontListPreference(mContext, mAttributeSet).mFonts;
 
         assertEquals(2, fonts.size());
         assertEquals("fonts/Sans.ttf", fonts.get(0).fontPath);
