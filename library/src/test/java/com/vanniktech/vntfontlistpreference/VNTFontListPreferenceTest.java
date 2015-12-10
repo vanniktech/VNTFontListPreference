@@ -37,6 +37,7 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.doReturn;
+import static org.mockito.Mockito.doThrow;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.spy;
 
@@ -58,16 +59,22 @@ public class VNTFontListPreferenceTest {
     }
 
     @Test
-    public void testVNTFontListPreferenceShouldThrowIllegalArgumentExceptionWhenDirectoryCanNotBeFound() {
+    public void testVNTFontListPreferenceShouldThrowIllegalArgumentExceptionWhenDirectoryCanNotBeFound() throws IOException {
+        final TypedArray typedArray = mock(TypedArray.class);
+        doReturn("fonts").when(typedArray).getString(R.styleable.VNTFontListPreference_vnt_fontDirectory);
+
+        doReturn(typedArray).when(mContext).obtainStyledAttributes(mAttributeSet, R.styleable.VNTFontListPreference);
+
+        doThrow(IOException.class).when(mAssets).list("fonts");
+
         expectedException.expect(IllegalStateException.class);
-        expectedException.expectMessage("FontListPreference was not able to search for fonts in the assets/null folder since the folder is not present. Please create it!");
+        expectedException.expectMessage("FontListPreference was not able to search for fonts in the assets/fonts folder since the folder is not present. Please create it!");
         new VNTFontListPreference(mContext, mAttributeSet);
     }
 
     @Test
     public void testVNTFontListPreferenceShouldThrowIllegalArgumentExceptionWhenNoFontsWereFound() throws IOException {
         doReturn(new String[] {}).when(mAssets).list("fonts");
-        doReturn(mAssets).when(mContext).getAssets();
 
         final TypedArray typedArray = mock(TypedArray.class);
         doReturn("fonts").when(typedArray).getString(R.styleable.VNTFontListPreference_vnt_fontDirectory);
