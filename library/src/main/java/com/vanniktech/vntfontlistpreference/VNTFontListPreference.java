@@ -16,6 +16,10 @@
 
 package com.vanniktech.vntfontlistpreference;
 
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
 import android.app.AlertDialog.Builder;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -29,10 +33,6 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.CheckedTextView;
 
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-
 public class VNTFontListPreference extends ListPreference {
     private static final int MIN_FONT_FILE_LENGTH = 5;
 
@@ -40,7 +40,6 @@ public class VNTFontListPreference extends ListPreference {
     private final String       mFontPreviewString;
     protected final List<Font> mFonts = new ArrayList<>();
 
-    @SuppressWarnings({ "PMD.AvoidCatchingNPE", "PMD.AvoidPrintStackTrace", "PMD.AvoidCatchingGenericException", "PMD.PreserveStackTrace" })
     public VNTFontListPreference(final Context context, final AttributeSet attrs) {
         super(context, attrs);
 
@@ -49,26 +48,22 @@ public class VNTFontListPreference extends ListPreference {
         mFontPreviewString = a.getString(R.styleable.VNTFontListPreference_vnt_fontPreviewString);
         a.recycle();
 
+        final String[] fonts;
+
         try {
-            final String[] fonts;
+            fonts = context.getAssets().list(fontDirectory);
+        } catch (final IOException e) {
+            throw new IllegalStateException("FontListPreference was not able to search for fonts in the assets/" + fontDirectory + " folder since the folder is not present. Please create it!", e);
+        }
 
-            try {
-                fonts = context.getAssets().list(fontDirectory);
-            } catch (final NullPointerException e) {
-                throw new IllegalStateException("FontListPreference was not able to search for fonts in the assets/" + fontDirectory + " folder since the folder is not present. Please create it!");
-            }
+        for (final String font : fonts) {
+            if (font != null && font.length() > MIN_FONT_FILE_LENGTH) {
+                final String fontType = font.substring(font.length() - 3);
 
-            for (final String font : fonts) {
-                if (font != null && font.length() > MIN_FONT_FILE_LENGTH) {
-                    final String fontType = font.substring(font.length() - 3);
-
-                    if ("ttf".equals(fontType) || "otf".equals(fontType)) {
-                        mFonts.add(new Font(StringFormatUtils.addAtEndIfNotPresent(fontDirectory, "/") + font));
-                    }
+                if ("ttf".equals(fontType) || "otf".equals(fontType)) {
+                    mFonts.add(new Font(StringFormatUtils.addAtEndIfNotPresent(fontDirectory, "/") + font));
                 }
             }
-        } catch (final IOException e) {
-            e.printStackTrace();
         }
 
         if (mFonts.isEmpty()) {
