@@ -26,6 +26,8 @@ android {
         textReport true
         textOutput 'stdout'
     }
+
+    resourcePrefix 'vnt_'
 }
 
 dependencies {
