@@ -61,9 +61,9 @@ public class VNTFontListPreferenceTest {
     @Test
     public void testVNTFontListPreferenceShouldThrowIllegalArgumentExceptionWhenDirectoryCanNotBeFound() throws IOException {
         final TypedArray typedArray = mock(TypedArray.class);
-        doReturn("fonts").when(typedArray).getString(R.styleable.VNTFontListPreference_vnt_fontDirectory);
+        doReturn("fonts").when(typedArray).getString(R.styleable.vnt_FontListPreference_vnt_fontDirectory);
 
-        doReturn(typedArray).when(mContext).obtainStyledAttributes(mAttributeSet, R.styleable.VNTFontListPreference);
+        doReturn(typedArray).when(mContext).obtainStyledAttributes(mAttributeSet, R.styleable.vnt_FontListPreference);
 
         doThrow(IOException.class).when(mAssets).list("fonts");
 
@@ -77,9 +77,9 @@ public class VNTFontListPreferenceTest {
         doReturn(new String[] {}).when(mAssets).list("fonts");
 
         final TypedArray typedArray = mock(TypedArray.class);
-        doReturn("fonts").when(typedArray).getString(R.styleable.VNTFontListPreference_vnt_fontDirectory);
+        doReturn("fonts").when(typedArray).getString(R.styleable.vnt_FontListPreference_vnt_fontDirectory);
 
-        doReturn(typedArray).when(mContext).obtainStyledAttributes(mAttributeSet, R.styleable.VNTFontListPreference);
+        doReturn(typedArray).when(mContext).obtainStyledAttributes(mAttributeSet, R.styleable.vnt_FontListPreference);
 
         expectedException.expect(IllegalStateException.class);
         expectedException.expectMessage("FontListPreference could not find any fonts in the assets/fonts folder. Please add some!");
@@ -89,9 +89,9 @@ public class VNTFontListPreferenceTest {
     @Test
     public void testVNTFontListPreferenceShouldFindOTFAndTTFFilesWhenPresentInDirectoryWithoutSlashAtTheEnd() throws IOException {
         final TypedArray typedArray = mock(TypedArray.class);
-        doReturn("fonts").when(typedArray).getString(R.styleable.VNTFontListPreference_vnt_fontDirectory);
+        doReturn("fonts").when(typedArray).getString(R.styleable.vnt_FontListPreference_vnt_fontDirectory);
 
-        doReturn(typedArray).when(mContext).obtainStyledAttributes(mAttributeSet, R.styleable.VNTFontListPreference);
+        doReturn(typedArray).when(mContext).obtainStyledAttributes(mAttributeSet, R.styleable.vnt_FontListPreference);
 
         this.testFindFontsInDirectory("fonts");
     }
@@ -99,9 +99,9 @@ public class VNTFontListPreferenceTest {
     @Test
     public void testVNTFontListPreferenceShouldFindOTFAndTTFFilesWhenPresentInDirectoryWithSlashAtTheEnd() throws IOException {
         final TypedArray typedArray = mock(TypedArray.class);
-        doReturn("fonts/").when(typedArray).getString(R.styleable.VNTFontListPreference_vnt_fontDirectory);
+        doReturn("fonts/").when(typedArray).getString(R.styleable.vnt_FontListPreference_vnt_fontDirectory);
 
-        doReturn(typedArray).when(mContext).obtainStyledAttributes(mAttributeSet, R.styleable.VNTFontListPreference);
+        doReturn(typedArray).when(mContext).obtainStyledAttributes(mAttributeSet, R.styleable.vnt_FontListPreference);
 
         this.testFindFontsInDirectory("fonts/");
     }
@@ -110,9 +110,9 @@ public class VNTFontListPreferenceTest {
     public void testVNTFontListPreferenceShouldSkipNonWrongFiles() throws IOException {
         final String path = "fonts/";
         final TypedArray typedArray = mock(TypedArray.class);
-        doReturn(path).when(typedArray).getString(R.styleable.VNTFontListPreference_vnt_fontDirectory);
+        doReturn(path).when(typedArray).getString(R.styleable.vnt_FontListPreference_vnt_fontDirectory);
 
-        doReturn(typedArray).when(mContext).obtainStyledAttributes(mAttributeSet, R.styleable.VNTFontListPreference);
+        doReturn(typedArray).when(mContext).obtainStyledAttributes(mAttributeSet, R.styleable.vnt_FontListPreference);
 
         doReturn(new String[] { "Test.ttf", "Test.otf", "Test", "", "a", null }).when(mAssets).list(path);
 

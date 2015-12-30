@@ -43,9 +43,9 @@ public class VNTFontListPreference extends ListPreference {
     public VNTFontListPreference(final Context context, final AttributeSet attrs) {
         super(context, attrs);
 
-        final TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.VNTFontListPreference);
-        final String fontDirectory = a.getString(R.styleable.VNTFontListPreference_vnt_fontDirectory);
-        mFontPreviewString = a.getString(R.styleable.VNTFontListPreference_vnt_fontPreviewString);
+        final TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.vnt_FontListPreference);
+        final String fontDirectory = a.getString(R.styleable.vnt_FontListPreference_vnt_fontDirectory);
+        mFontPreviewString = a.getString(R.styleable.vnt_FontListPreference_vnt_fontPreviewString);
         a.recycle();
 
         final String[] fonts;
