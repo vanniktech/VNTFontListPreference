@@ -12,11 +12,10 @@ This is an easy to use custom preference, which opens a dialog with a list of av
 
 ```xml
 <com.vanniktech.vntfontlistpreference.VNTFontListPreference
-    xmlns:vntfontlistpreference="http://schemas.android.com/apk/res-auto"
     android:defaultValue="@string/font_face_default_value"
     android:key="preference_font_face"
     android:title="@string/font_face"
-    vntfontlistpreference:vnt_fontDirectory="@string/font_face_font_directory" />
+    app:vnt_fontDirectory="@string/font_face_font_directory" />
 ```
 
 `vntfontlistpreference:vnt_fontDirectory` can be something like `fonts`. This means that the dialog will list all fonts, that have the ending `ttf` or `otf` under `assets/fonts`. If there are no fonts under the provided directory it will throw an exception during initialization.
