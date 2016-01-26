@@ -18,11 +18,11 @@ import android.widget.BaseAdapter;
 import android.widget.CheckedTextView;
 
 public class VNTFontListPreference extends ListPreference {
-    private static final int MIN_FONT_FILE_LENGTH = 5;
+    private static final int   MIN_FONT_FILE_LENGTH = 5;
 
-    private Font               mSelectedFontFace;
+    Font                       mSelectedFontFace;
     private final String       mFontPreviewString;
-    protected final List<Font> mFonts = new ArrayList<>();
+    protected final List<Font> mFonts               = new ArrayList<>();
 
     public VNTFontListPreference(final Context context, final AttributeSet attrs) {
         super(context, attrs);
@@ -89,7 +89,7 @@ public class VNTFontListPreference extends ListPreference {
         builder.setPositiveButton(null, null);
     }
 
-    private void updateSummary() {
+    void updateSummary() {
         if (mSelectedFontFace != null) {
             this.setSummary(mSelectedFontFace.getName());
         }
@@ -153,12 +153,16 @@ public class VNTFontListPreference extends ListPreference {
 
     private static class CustomHolder {
         private CheckedTextView checkedTextView;
+
+        CustomHolder() {
+            // In order remove creation of synthetic accessor methods
+        }
     }
 
     protected static class Font {
         private static final int FILE_ENDING_LENGTH = 4;
 
-        protected final String fontPath;
+        protected final String   fontPath;
 
         public Font(final String fontPath) {
             this.fontPath = fontPath;
