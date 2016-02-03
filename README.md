@@ -3,6 +3,8 @@ VNTFontListPreference
 
 [![Build Status](https://travis-ci.org/vanniktech/VNTFontListPreference.svg?branch=master)](https://travis-ci.org/vanniktech/VNTFontListPreference)
 [![API](https://img.shields.io/badge/API-14%2B-brightgreen.svg?style=flat)](https://android-arsenal.com/api?level=14)
+<a href="http://www.methodscount.com/?lib=com.vanniktech%3Avntfontlistpreference%3A1.0.0"><img src="https://img.shields.io/badge/Methods count-75-e91e63.svg"></img></a>
+<a href="http://www.methodscount.com/?lib=com.vanniktech%3Avntfontlistpreference%3A1.0.0"><img src="https://img.shields.io/badge/Size-10 KB-e91e63.svg"></img></a>
 [![License](http://img.shields.io/:license-apache-blue.svg)](http://www.apache.org/licenses/LICENSE-2.0.html)
 [![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-VNTFontListPreference-brightgreen.svg?style=flat)](https://android-arsenal.com/details/1/798)
 [![Jit Pack](https://img.shields.io/github/tag/vanniktech/VNTFontListPreference.svg?label=JitPack%20Maven)](https://jitpack.io/#vanniktech/VNTFontListPreference)
