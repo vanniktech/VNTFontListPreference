@@ -16,18 +16,18 @@ public class StringFormatUtilsTest {
         return Arrays.asList(new Object[][] { { null, "/", "/" }, { "fonts", "/", "fonts/" }, { "fonts/", "/", "fonts/" }, });
     }
 
-    private final String mString;
-    private final String mSuffix;
-    private final String mExpected;
+    private final String string;
+    private final String suffix;
+    private final String expected;
 
     public StringFormatUtilsTest(final String string, final String suffix, final String expected) {
-        mString = string;
-        mSuffix = suffix;
-        mExpected = expected;
+        this.string = string;
+        this.suffix = suffix;
+        this.expected = expected;
     }
 
     @Test
     public void testAddAtEndIfNotPresent() {
-        assertEquals(mExpected, StringFormatUtils.addAtEndIfNotPresent(mString, mSuffix));
+        assertEquals(expected, StringFormatUtils.addAtEndIfNotPresent(string, suffix));
     }
 }
