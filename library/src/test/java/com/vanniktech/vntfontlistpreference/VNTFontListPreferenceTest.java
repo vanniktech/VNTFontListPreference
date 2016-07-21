@@ -1,13 +1,9 @@
 package com.vanniktech.vntfontlistpreference;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNotEquals;
-import static org.junit.Assert.assertTrue;
-import static org.mockito.Mockito.doReturn;
-import static org.mockito.Mockito.doThrow;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.spy;
+import android.content.Context;
+import android.content.res.AssetManager;
+import android.content.res.TypedArray;
+import android.util.AttributeSet;
 
 import org.junit.Before;
 import org.junit.Rule;
@@ -20,13 +16,19 @@ import org.robolectric.RuntimeEnvironment;
 import java.io.IOException;
 import java.util.List;
 
-import android.content.Context;
-import android.content.res.AssetManager;
-import android.content.res.TypedArray;
-import android.util.AttributeSet;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotEquals;
+import static org.junit.Assert.assertTrue;
+import static org.mockito.Mockito.doReturn;
+import static org.mockito.Mockito.doThrow;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.spy;
 
 @RunWith(RobolectricTestRunner.class)
 public class VNTFontListPreferenceTest {
+    private static final String FONTS = "fonts";
+
     @Rule public final ExpectedException expectedException = ExpectedException.none();
 
     private Context                      context;
@@ -45,11 +47,11 @@ public class VNTFontListPreferenceTest {
     @Test
     public void testVNTFontListPreferenceShouldThrowIllegalArgumentExceptionWhenDirectoryCanNotBeFound() throws IOException {
         final TypedArray typedArray = mock(TypedArray.class);
-        doReturn("fonts").when(typedArray).getString(R.styleable.vnt_FontListPreference_vnt_fontDirectory);
+        doReturn(FONTS).when(typedArray).getString(R.styleable.vnt_FontListPreference_vnt_fontDirectory);
 
         doReturn(typedArray).when(context).obtainStyledAttributes(attributeSet, R.styleable.vnt_FontListPreference);
 
-        doThrow(IOException.class).when(assets).list("fonts");
+        doThrow(IOException.class).when(assets).list(FONTS);
 
         expectedException.expect(IllegalStateException.class);
         expectedException.expectMessage("FontListPreference was not able to search for fonts in the assets/fonts folder since the folder is not present. Please create it!");
@@ -58,10 +60,10 @@ public class VNTFontListPreferenceTest {
 
     @Test
     public void testVNTFontListPreferenceShouldThrowIllegalArgumentExceptionWhenNoFontsWereFound() throws IOException {
-        doReturn(new String[] {}).when(assets).list("fonts");
+        doReturn(new String[] {}).when(assets).list(FONTS);
 
         final TypedArray typedArray = mock(TypedArray.class);
-        doReturn("fonts").when(typedArray).getString(R.styleable.vnt_FontListPreference_vnt_fontDirectory);
+        doReturn(FONTS).when(typedArray).getString(R.styleable.vnt_FontListPreference_vnt_fontDirectory);
 
         doReturn(typedArray).when(context).obtainStyledAttributes(attributeSet, R.styleable.vnt_FontListPreference);
 
@@ -73,11 +75,11 @@ public class VNTFontListPreferenceTest {
     @Test
     public void testVNTFontListPreferenceShouldFindOTFAndTTFFilesWhenPresentInDirectoryWithoutSlashAtTheEnd() throws IOException {
         final TypedArray typedArray = mock(TypedArray.class);
-        doReturn("fonts").when(typedArray).getString(R.styleable.vnt_FontListPreference_vnt_fontDirectory);
+        doReturn(FONTS).when(typedArray).getString(R.styleable.vnt_FontListPreference_vnt_fontDirectory);
 
         doReturn(typedArray).when(context).obtainStyledAttributes(attributeSet, R.styleable.vnt_FontListPreference);
 
-        this.testFindFontsInDirectory("fonts");
+        this.testFindFontsInDirectory(FONTS);
     }
 
     @Test
@@ -119,7 +121,7 @@ public class VNTFontListPreferenceTest {
 
     @Test
     public void testFontGetPathShouldReturnPathWhenFontPathIsValid() {
-        assertEquals("fonts", new VNTFontListPreference.Font("fonts/DNTitling.ttf").getPath());
+        assertEquals(FONTS, new VNTFontListPreference.Font("fonts/DNTitling.ttf").getPath());
     }
 
     @Test
@@ -129,7 +131,7 @@ public class VNTFontListPreferenceTest {
 
     @Test
     public void testFontEqualsShouldReturnTrueWhenFontPathsAreEqual() {
-        assertTrue(new VNTFontListPreference.Font("fonts/MyFont.otf").equals(new VNTFontListPreference.Font("fonts/MyFont.otf")));
+        assertTrue(new VNTFontListPreference.Font("fonts/MyFont2.otf").equals(new VNTFontListPreference.Font("fonts/MyFont2.otf")));
     }
 
     @Test
@@ -139,7 +141,7 @@ public class VNTFontListPreferenceTest {
 
     @Test
     public void testFontHashCodeShouldReturnTrueWhenFontPathsAreEqual() {
-        assertEquals(new VNTFontListPreference.Font("fonts/MyFont.otf").hashCode(), new VNTFontListPreference.Font("fonts/MyFont.otf").hashCode());
+        assertEquals(new VNTFontListPreference.Font("fonts/MyFont3.otf").hashCode(), new VNTFontListPreference.Font("fonts/MyFont3.otf").hashCode());
     }
 
     @Test
