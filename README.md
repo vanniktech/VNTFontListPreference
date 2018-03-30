@@ -1,7 +1,7 @@
 VNTFontListPreference
 =====================
 
-This is an easy to use custom preference, which opens a dialog with a list of available fonts. The selected font gets automatically saved and you are able to set the font directory as well as the defaultValue.
+This custom preference opens a dialog of available fonts and automatically saves a selected font. The font directory and defaultValue is fully customizable.
 
 ```xml
 <com.vanniktech.vntfontlistpreference.VNTFontListPreference
@@ -11,7 +11,7 @@ This is an easy to use custom preference, which opens a dialog with a list of av
     app:vnt_fontDirectory="@string/font_face_font_directory" />
 ```
 
-`vntfontlistpreference:vnt_fontDirectory` can be something like `fonts`. This means that the dialog will list all fonts, that have the ending `ttf` or `otf` under `assets/fonts`. If there are no fonts under the provided directory it will throw an exception during initialization.
+`vntfontlistpreference:vnt_fontDirectory` will list all fonts ending in `ttf` or `otf` under `assets/fonts`, similar to `fonts`. If there are no fonts under the provided directory it will throw an exception during initialization.
 
 # Download Sample App
 
