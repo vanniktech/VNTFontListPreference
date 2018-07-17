@@ -13,16 +13,6 @@ This custom preference opens a dialog of available fonts and automatically saves
 
 `vntfontlistpreference:vnt_fontDirectory` will list all fonts ending in `ttf` or `otf` under `assets/fonts`, similar to `fonts`. If there are no fonts under the provided directory it will throw an exception during initialization.
 
-# Download Sample App
-
-[![Get it on Google Play](https://developer.android.com/images/brand/en_generic_rgb_wo_45.png)](https://play.google.com/store/apps/details?id=com.vanniktech.vntfontlistpreference.sample)
-
-or scan the code on your mobile
-
-![Google Play QR link](http://api.qrserver.com/v1/create-qr-code/?color=000000&bgcolor=FFFFFF&data=https%3A%2F%2Fplay.google.com%2Fstore%2Fapps%2Fdetails%3Fid%3Dcom.vanniktech.vntfontlistpreference.sample&qzone=1&margin=0&size=150x150&ecc=L)
-
-or download it [directly](sample.apk)
-
 # Setup
 
 **build.gradle**
@@ -39,9 +29,9 @@ Go to your preference XML file and insert the above mentioned XML tag. Afterward
 # Get default font
 
 ```java
-final SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-final String defaultFont = sharedPreferences.getString("preference_font_face", this.getString(R.string.font_face_default_value));
-final Typeface typeface = Typeface.createFromAsset(this.getAssets(), font);
+SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+String defaultFont = sharedPreferences.getString("preference_font_face", getString(R.string.font_face_default_value));
+Typeface typeface = Typeface.createFromAsset(getAssets(), font);
 ```
 
 # Proguard
